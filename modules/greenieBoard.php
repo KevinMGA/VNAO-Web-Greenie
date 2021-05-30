@@ -85,6 +85,9 @@ class GreenieBoard {
                 elseif($j->grade == "--") {
                     $currentGrade = "ng";
                 }
+                elseif($j->grade == "CUT") {
+                    $currentGrade = "cutpass";
+                }
                 if($j->wire == "1") {
                     $currentGrade = "ng";
                 }
