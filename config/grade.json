@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "lso-grades",
+  "private_key_id": "5f460641d5717d891089aabdc84fd10b8c0b3ef8",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDSWHEc1qOxuuYP\nIj10YMs8b4/y1yoG+MdM0/6krICysTfnJ/gqhPeThapShH2MK4v2G8cFDmQMX+j0\n2auQfPp0AkRkEzCdbtQQD30eWzyADpJEKZSt5e8KqYKZ1c+pl4/bw6oSobm25hEV\nCGuSP4uhnQwoxF1iXTKk2vQzSqNSQ1V9oMNvFQu3qQWVXyS7vjuGyCrZ+ro/k3SH\njsSmETHj7zxgzu2HpEYjuBqmELDFFna5rcXQgZ5GNLhPwGODqzq08mwjlYKzcgCY\nJFnyFSzpZ1WgWpUR0pjndPfwset9o7EqFboEij2b9wVQ4vonsRooM+68kxOBvAjl\npR3HgF5dAgMBAAECggEAXiAaebOoq5r9YM9LHb1EpMYtbZcP5O/FS2FgBTN2IcBA\nyk0t9WTr3pVFKsjD34oLBvXWILKYXZs7hPm0lqL+dhQfo4Kc0g4qkgdET2W3VHxw\nwlSzBgAq8CP7X7h4RSUfyFEt1UmOb8RS540NifOqmYbLzqBUQ3R9+ZxLA3rGS8Qr\nGVDJ/BTIeBbUqdSwaLV7AtStF3yaIn2h6aNR91eh613kyO6S/JeLG9FqfxFGP8W9\nPoaMuNG662OYUeTr1V6JBizN+RvzAF+PO9Syzl9uV1jUYPO2YootAPv8OxUKyoV4\nfbxTyEQPAQIaX6avok2hQ/2S71b8zasHGkAz+jrrlwKBgQDpnbrOVgDpeSJiqgwe\n9SDKp2YZoLaksnMA+9W1abkk+M0gKPgqR/ew6PLDoLPLjfRX3XihZNmKwHyjhhmw\n5CDurdnV6Sk62CX9X2VZ70XWkD+Gh+q67HzGCvh8sDp0gAdUATNRx3oJJgPgo8K2\nBQL//WWbTvUZl9fT6DUP9vgetwKBgQDmf+qJpUytaqv5S1f2FNkXOEs11CBjlOyP\nkr95gl1+ybXaN6TL/nmGAcJxg7i5k8BWzdLQLfQwefXnmbz+qWI3oT52RV7FaE0G\nNUJjU/owBjDQzc8tdeOFkhLI/pNSNYzeiPKYdDvhMPlnOM/XL2IfKedkivGh3TfL\n5TuonuTXiwKBgQCNq3BAdplA/Iukp5iIIYEMRC2/dt2rzOe+/flgdUeoqxTB3vZ3\ntYL4jpvBlK/TzjcSHaVswlrGMOqkw8rKod1ywIzskuPE4pVPLM2ql1aTwpAzhjML\nviQAeWCtRLV+NrG6+KtleYGBEMOjM8v9U9a45LL8Vwp9xb5FrHiZQNzAywKBgDxI\ncBqXtLoWD+wfHF4rjatY+bKWS/I/XK8f/hvVUIZ8UqdDrkH7x+SYSTZO8Nz4G3GY\nWu4/VoHnI7zypE8mFZ3e+esMsYCHir146Gf56pDszY+OhASrtFmWnnsauYTipHj+\n8BOXMqHuoQux/AmXRt5Ho1DUVeWzaYhV54huJgOJAoGBAIWLolb3JNra6Oii8Hod\n1R31x+7VLjGvvqeE34BXvPvELVRjDL5sA9Q/fkMByGUqZkyAAn/ZD2UFwNDD3VKg\n7R5j0HnElkplgzaUBO0GOW4vI8F8g0N1V9oRt6jmfzA+Ll78evou2UVFxTjlca3q\nsZZtsY7yJ8mVHrIQTCCEZOz0\n-----END PRIVATE KEY-----\n",
+  "client_email": "lso-35@lso-grades.iam.gserviceaccount.com",
+  "client_id": "101349417206050669045",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/lso-35%40lso-grades.iam.gserviceaccount.com"
+}
