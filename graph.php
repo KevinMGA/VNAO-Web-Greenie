@@ -1,4 +1,5 @@
 <?php
+
 require_once('config/db.php');
 require_once('lib/pdo_db.php');
 require_once('modules/greenieBoard.php');
@@ -49,7 +50,8 @@ $image = $Graph->getGraph($_GET['graphview']);
 
 					<div class="row" style="padding-left:15px;">
 						<div class="col-md-6 text-justify">
-							<p>Details: <span class="bold"><?php echo $i->details; ?></span></p>
+							<?php $newD = explode(" ", $i->details);?>
+							<p>Details: <span class="bold"><?php echo '<br>START: ' . $newD[0] . '<br>' . ' MIDDLE: ' . $newD[1]. '<br>' . ' IN CLOSE: ' . $newD[3]. '<br>' . ' RAMP: ' . $newD[4]; ?></span></p>
 							
 						</div>
 					</div>

@@ -124,6 +124,24 @@ class GreenieBoard {
 
     }
 
+
+    public function pilotPage($id) {
+
+        $sql = "select * from traps where modex = '$id'";
+        $this->db->query($sql);
+        $results = $this->db->resultset();
+       
+
+        foreach($results as $r) {
+        	echo $r->details;
+        	echo '<br>';
+        	echo $r->grade;
+        }
+
+       	//var_dump($results);
+
+    }
+
     
 }
 

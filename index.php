@@ -153,7 +153,7 @@ $pilots = $Greenie->getPilots();
 	  	<?php foreach($pilots as $p):?>
 	    	<tr>
 	    		<td><?php echo $p->modex;?></td>
-	    		<td><a href="pilotlog.php?callsign?=<?php echo $p->callsign;?>"><?php echo $p->callsign;?></a></td>
+	    		<td><a target="_blank" href="pilotlog.php?callsign=<?php echo $p->modex?>"><?php echo $p->callsign;?></a></td>
 	    		<td><?php echo $Greenie->avg($p->callsign); ?></td>	
 	    		<?php
 	    			echo $Greenie->getGrade($p->callsign);

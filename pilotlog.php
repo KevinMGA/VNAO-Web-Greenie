@@ -5,10 +5,11 @@ require_once('modules/greenieBoard.php');
 
 $Graph = new GreenieBoard();
 
-$image = $Graph->getGraph($_GET['graphview']);
+
+//$image = $Graph->pilotPage($_GET['callsign']);
 
 
+//echo $image;
 ?>
 
-
-
+<h1><center>COMING SOON!</center></h1>
