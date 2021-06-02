@@ -1,17 +1,16 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 require_once('config/db.php');
 require_once('lib/pdo_db.php');
 require_once('modules/greenieBoard.php');
 
 $Greenie = new GreenieBoard();
+$squad = $Greenie->getSquad($_GET['board']);
+$traps = $Greenie->getTraps();
 
-if(!isset($_GET['board'])) {
-	$set = false;
-} else {
-	$squad = $Greenie->getSquad($_GET['board']);
-	$traps = $Greenie->getTraps();
-	$set = true;
-}
 ?>
 
 <!doctype html>
