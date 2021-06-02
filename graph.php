@@ -50,8 +50,8 @@ $image = $Graph->getGraph($_GET['graphview']);
 
 					<div class="row" style="padding-left:15px;">
 						<div class="col-md-6 text-justify">
-							<?php $newD = explode(" ", $i->details);?>
-							<p>Details: <span class="bold"><?php echo '<br>START: ' . $newD[0] . '<br>' . ' MIDDLE: ' . $newD[1]. '<br>' . ' IN CLOSE: ' . $newD[3]. '<br>' . ' RAMP: ' . $newD[4]; ?></span></p>
+						
+							<p>Details: <span class="bold"><?php echo $i->details; ?></span></p>
 							
 						</div>
 					</div>

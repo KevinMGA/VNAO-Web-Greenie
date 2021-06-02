@@ -1,6 +1,9 @@
 <?php
+
+
 class GreenieBoard {
     
+
     private $db;
     
     public function __construct() {
@@ -17,9 +20,17 @@ class GreenieBoard {
 
     }
 
-    public function getPilots() {
+    public function getPilots($squad) {
 
-        $sql = "select * from pilots";
+        $sql = "select * from pilots where squad = '$squad'";
+        $this->db->query($sql);
+        $results = $this->db->resultset();
+        return $results;
+
+    }
+    public function getSquads() {
+
+        $sql = "select * from squads";
         $this->db->query($sql);
         $results = $this->db->resultset();
         return $results;
@@ -51,23 +62,21 @@ class GreenieBoard {
 
         return number_format($ret, 2);
     }
-    /*
-    public function trapCount($modex) {
-        $sql = "SELECT * FROM traps where modex = :modex ORDER BY datetime";
-        $this->db->bind(':modex', $modex);
+
+    public function getGrade($callsign) {
+
+        $up = new Updates();
+
+        $sql = "select * FROM traps where pilot = :callsign ORDER BY datetime";
+        $this->db->bind(':callsign', $callsign);
         $result = $this->db->resultset();
         
-        return count($result);
-    }
-    */
+        $up->updateGrades($callsign);
 
-    public function getGrade($modex) {
-
-        $sql = "select * FROM traps where pilot = :modex ORDER BY datetime";
-        $this->db->bind(':modex', $modex);
-        $result = $this->db->resultset();
-        
         foreach($result as $j) {
+
+            
+                
             if($j->grade != "WOFD") {
                 // Grade Colors
                 if($j->grade == "(OK)") {
@@ -96,14 +105,15 @@ class GreenieBoard {
                 if($j->_case == "1") {
                     $case = 'hidden';
                 }
+                elseif($j->_case == "2") {
+                    $case = 'visible';
+                }
                 elseif($j->_case == "3") {
                     $case = 'visible';
                 }
 
                 // Final Displayed Grade
-                if($j->wire == "1") {
-                    $newGrade = "NG";
-                } elseif($j->grade == "--") {
+                if($j->grade == "--") {
                     $newGrade = "NG";
                 } else {
                     $newGrade = $j->grade;
@@ -138,11 +148,93 @@ class GreenieBoard {
         	echo $r->grade;
         }
 
-       	//var_dump($results);
+    }
+
+
+    public function getSquad($tag) {
+        $sql = "select * from squads where tag = '$tag'";
+        $this->db->query($sql);
+        $results = $this->db->resultset();
+
+        if(empty($results)) {
+            $empty = "Wrong tag given";
+            echo $empty;
+        } else {
+            return $results;
+        }
+    }
+
+
+    public function allPilots() {
+
+        $sql = "select * from pilots";
+        $this->db->query($sql);
+        $results = $this->db->resultset();
+        return $results;
+
+    }
+
+   public function lastFlight($a) {
+
+        $sql = "select * from flight_log where callsign = '$a' ORDER BY dateStamp DESC";
+        $this->db->query($sql);
+        $results = $this->db->single();
+
+        if(is_object($results)) {
+            return date('M j, Y', strtotime($results->dateStamp));
+        }
+        
 
     }
 
     
 }
+
+
+
+class Updates {
+    
+    private $db;
+    
+    public function __construct() {
+        $this->db = new Database;   
+    }
+    
+    public function updateGrades($a) {
+        $sql = "select * FROM traps where pilot = :callsign ORDER BY datetime";
+        $this->db->query($sql);
+        $this->db->bind(':callsign', $a);
+
+        $result = $this->db->resultset();
+        
+        foreach ($result as $b) {
+            $details_split = explode(" ", $b->details);
+            if(isset($details_split[4])) {
+                if(strpos($details_split[4], "LO") === 0) {
+                    echo $b->id . ' LO is at the start of the RAMP - NO GRADE <br>';
+
+                    $sql = "update traps set grade = '--', points = '2' where id = '$b->id'";
+                    $this->db->query($sql);
+                    $result = $this->db->execute();
+                }
+            }
+            if($b->wire == '1') {
+                echo $b->id . ": Wire is equal to 1<br>";
+                $sql = "update traps set grade = '--', points = '2' where id = '$b->id'";
+                $this->db->query($sql);
+                $result = $this->db->execute();
+            }
+            if($b->grade == 'WOP') {
+                echo $b->id . ": Grade is WOP<br>";
+                $sql = "update traps set details = 'WOP' where id = '$b->id'";
+                $this->db->query($sql);
+                $result = $this->db->execute();
+            }
+        }
+    }
+}
+
+
+
 
 ?>

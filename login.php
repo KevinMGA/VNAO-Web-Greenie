@@ -1,12 +1,12 @@
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="css/login.css">
+<link rel="stylesheet" href="assets/css/login.css">
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
 <div class="sidenav">
          <div class="login-main-text">
-             <img src="assets/img/logoSTREAM.png" class="img-responsive" style="width:100%;">
+             <img src="assets/images/Main-14.webp" class="img-responsive" style="width:60%;">
          </div>
       </div>
       <div class="main">
