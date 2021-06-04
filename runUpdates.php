@@ -11,11 +11,12 @@ require_once('modules/updateFunctions.php');
 $Cron = new Auto();
 
 
-$WOFD = $Cron->RemoveWOFD();
-$sameDay = $Cron->sameDay();
-$newDay = $Cron->newDay();
-$Grade = $Cron->avgGrade();
-$Score = $Cron->avgScore();
-$Time = $Cron->updateTime();
+$Cron->RemoveWOFD();
+$Cron->sameDay();
+$Cron->newDay();
+$Cron->avgGrade();
+//$Cron->avgScore();
+//$Cron->showGrade();
+$Cron->updateTime();
 
 ?>

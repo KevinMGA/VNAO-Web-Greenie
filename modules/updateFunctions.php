@@ -49,12 +49,13 @@ class Auto {
 
     }
 
+
     public function avgGrade() {
-        $sql = "SELECT board_ID FROM board";
+        $sql = "SELECT board_ID, pilot FROM board";
         $this->db->query($sql);
         $boardResults = $this->db->resultset();
         foreach($boardResults as $br) {
-            $sql = "SELECT grade from traps WHERE board_ID = $br->board_ID";
+            $sql = "SELECT grade, pilot from traps WHERE board_ID = $br->board_ID";
             $this->db->query($sql);
             $results = $this->db->resultset();
             $grade = array();
@@ -62,6 +63,8 @@ class Auto {
                 if($r->grade == "CUT") {
                     $grade[] = floatval(0);
                 } elseif($r->grade == "WO") {
+                    $grade[] = floatval(1);
+                } elseif($r->grade == "WOP") {
                     $grade[] = floatval(1);
                 } elseif($r->grade == "NG") {
                     $grade[] = floatval(2);
@@ -76,6 +79,7 @@ class Auto {
                 } elseif($r->grade == "_OK_") {
                     $grade[] = floatval(5);
                 }
+
             }
             $n = count($grade);
             $sum = 0;
@@ -87,23 +91,70 @@ class Auto {
             } else {
                 $ret = 0;
             }
-            $re = round($ret);
+            $re = $ret;
+
+            // Debugs
+
+            if($re < 1.49) {
+                $final = "CUT";
+            }  elseif($re > 1.49 && $re < 2.49) {
+                $final = "NG";
+            }  elseif($re > 2.49 && $re < 3.49) {
+                $final = "(OK)";
+            }  elseif($re > 3.49 && $re < 4.49) {
+                $final = "OK";
+            }  elseif($re > 4.49) {
+                $final = "_OK_";
+            } 
+
+            /*
             if($re == 0) {
                 $final = "CUT";
             } elseif($re == 1) {
                 $final = "WO";
             } elseif($re == 2) {
                 $final = "NG";
-            } elseif($re == 2.5) {
-                $final = "BOLTER";
-            } elseif($re == 3) {
+            }  elseif($re == 3) {
                 $final = "(OK)";
             } elseif($re == 4) {
                 $final = "OK";
             } elseif($re == 5) {
                 $final = "_OK_";
             } 
-            echo 'COUNT: ' .$n. ' SCORE: ' .$re. ' GRADE: ' .$final. '<br>';
+            */
+            // Debug 
+
+            echo 'PILOT: ' . $br->pilot. ' | Grade: ' . $final.'  | Score: ' .$re. '<br>';
+
+            $sql = "UPDATE board SET grade = '$final', score = '$re' WHERE board_ID = '$br->board_ID'";
+            $this->db->query($sql);
+            $end = $this->db->execute();
+        }
+    }
+
+
+/*
+    public function showGrade() {
+        echo 'GRADE DEBUG::: <br>'; 
+        $sql = "SELECT board_ID, pilot, score FROM board";
+        $this->db->query($sql);
+        $boardResults = $this->db->resultset();
+
+        foreach($boardResults as $br) {
+
+            $re = $br->score;
+            if($re < 1.49) {
+                $final = "CUT";
+            }  elseif($re > 1.49 && $re < 2.49) {
+                $final = "NG";
+            }  elseif($re > 2.49 && $re < 3.49) {
+                $final = "(OK)";
+            }  elseif($re > 3.49 && $re < 4.49) {
+                $final = "OK";
+            }  elseif($re > 4.49) {
+                $final = "_OK_";
+            } 
+            echo 'PILOT: ' . $br->pilot. ' | Grade: ' . $final.'<br>';
             $sql = "UPDATE board SET grade = '$final' WHERE board_ID = '$br->board_ID'";
             $this->db->query($sql);
             $end = $this->db->execute();
@@ -111,7 +162,8 @@ class Auto {
     }
 
     public function avgScore() {
-        $sql = "SELECT board_ID FROM board";
+        echo 'SCORE DEBUG::: <br>'; 
+        $sql = "SELECT board_ID, pilot FROM board";
         $this->db->query($sql);
         $boardResults = $this->db->resultset();
         foreach($boardResults as $br) {
@@ -133,13 +185,16 @@ class Auto {
                 $ret = 0;
             }
             $final = $ret;
-            echo 'SCORE - COUNT: ' .$n. ' POINTS: ' .$final. '<br>';
+
+            // Debug 
+            echo 'PILOT: ' . $br->pilot. ' | Grade: ' . $final.'<br>';
+
             $sql = "UPDATE board SET score = '$final' WHERE board_ID = '$br->board_ID'";
             $this->db->query($sql);
             $end = $this->db->execute();
         }
     }
-
+*/
     public function updateTime() {
 
         $sql = "SELECT callsign FROM pilots";
