@@ -53,6 +53,10 @@ $traps = $Greenie->getTraps();
     	table .callsignHeader {
     		min-width:50px !important;
     	}
+    	.key {
+			width:250px !important;
+			color:<?php echo $s->tableFontColor;?>;
+		}
     </style>
   </head>
 
