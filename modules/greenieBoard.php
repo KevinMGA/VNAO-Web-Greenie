@@ -22,7 +22,7 @@ class GreenieBoard {
 
     public function getPilots($squad) {
 
-        $sql = "select * from pilots where squad = '$squad'";
+        $sql = "select * from pilots where squad = '$squad' ORDER BY modex ASC";
         $this->db->query($sql);
         $results = $this->db->resultset();
         return $results;
@@ -63,21 +63,97 @@ class GreenieBoard {
         return number_format($ret, 2);
     }
 
+    public function pullGrade($a) {
+        $sql = "SELECT * FROM board WHERE pilot = '$a' ORDER BY appDate";
+        $this->db->query($sql);
+        $results = $this->db->resultset();
+
+        foreach($results as $r) {
+
+            if($r->grade == "(OK)") {
+                $currentGrades = "fair";
+            }
+            elseif($r->grade == "OK") {
+                $currentGrades = "ok";
+            }
+            elseif($r->grade == "WO") {
+                $currentGrades = "wo";
+            }
+            elseif($r->grade == "-- (BOLTER)") {
+                $currentGrades = "bolter";
+            }
+            elseif($r->grade == "NG") {
+                $currentGrades = "ng";
+            }
+            elseif($r->grade == "CUT") {
+                $currentGrades = "cutpass";
+            }
+           
+            
+            // CASE 3
+            if($r->_case == "1") {
+                $case = 'hidden';
+            }
+            elseif($r->_case == "2") {
+                $case = 'visible';
+            }
+            elseif($r->_case == "3") {
+                $case = 'visible';
+            }
+
+
+            $sql = "select * FROM traps where board_ID = '$r->board_ID' ORDER BY datetime";
+            $this->db->query($sql);
+            $end = $this->db->resultset();
+
+            $grades = "";
+
+            foreach($end as $e) {
+                if($e->grade == "(OK)") {
+                    $currentGrade = "fair";
+                }
+                elseif($e->grade == "OK") {
+                    $currentGrade = "ok";
+                }
+                elseif($e->grade == "WO") {
+                    $currentGrade = "wo";
+                }
+                elseif($e->grade == "-- (BOLTER)") {
+                    $currentGrade = "bolter";
+                }
+                elseif($e->grade == "--") {
+                    $currentGrade = "ng";
+                }
+                elseif($e->grade == "CUT") {
+                    $currentGrade = "cutpass";
+                }
+                $grades .= '<span class="gradeBox '.$currentGrade.'">&nbsp;</span>';
+            }
+            
+
+
+       
+
+            echo '<td class="tip grade '.$currentGrades.'"><a class="link" target="_blank" href="graph.php?graphview='.$r->id.'"><span class="tiptext">'.$grades.'</span><span class="night '.$case.'">⬤</span></a></td>';
+        }
+    }
+
+/*
     public function getGrade($callsign) {
 
         $up = new Updates();
 
         $sql = "select * FROM traps where pilot = :callsign ORDER BY datetime";
+        $this->db->query($sql);
         $this->db->bind(':callsign', $callsign);
         $result = $this->db->resultset();
         
         $up->updateGrades($callsign);
 
         foreach($result as $j) {
-
-            
                 
             if($j->grade != "WOFD") {
+
                 // Grade Colors
                 if($j->grade == "(OK)") {
                     $currentGrade = "fair";
@@ -100,7 +176,6 @@ class GreenieBoard {
                 if($j->wire == "1") {
                     $currentGrade = "ng";
                 }
-
                 // CASE 3
                 if($j->_case == "1") {
                     $case = 'hidden';
@@ -111,7 +186,6 @@ class GreenieBoard {
                 elseif($j->_case == "3") {
                     $case = 'visible';
                 }
-
                 // Final Displayed Grade
                 if($j->grade == "--") {
                     $newGrade = "NG";
@@ -123,10 +197,26 @@ class GreenieBoard {
             }
         }
     }
-
+*/
     public function getGraph($id) {
 
-        $sql = "select * from traps where id = $id";
+        $sql = "SELECT board_ID FROM board where id = '$id'";
+        $this->db->query($sql);
+        $results = $this->db->single();
+        
+        foreach($results as $r) {
+            $sql = "SELECT * FROM traps WHERE board_ID = '$r'";
+            $this->db->query($sql);
+            $results = $this->db->resultset();
+            return $results;
+        }
+
+    }
+
+
+    public function getTrap($id) {
+
+        $sql = "select * from traps where id = '$id'";
         $this->db->query($sql);
         $results = $this->db->resultset();
         
@@ -167,7 +257,7 @@ class GreenieBoard {
 
     public function allPilots() {
 
-        $sql = "select * from pilots";
+        $sql = "SELECT * FROM pilots WHERE callsign != ' ' ORDER BY squad ASC";
         $this->db->query($sql);
         $results = $this->db->resultset();
         return $results;
@@ -231,6 +321,42 @@ class Updates {
                 $result = $this->db->execute();
             }
         }
+    }
+
+
+    public function listGrades($a) {
+        $sql = "select * FROM traps where board_ID = '$a' ORDER BY datetime";
+        $this->db->query($sql);
+        $end = $this->db->resultset();
+
+        $grades = array();
+
+        foreach($end as $e) {
+            if($e->grade == "(OK)") {
+                $currentGrade = "fair";
+            }
+            elseif($e->grade == "OK") {
+                $currentGrade = "ok";
+            }
+            elseif($e->grade == "WO") {
+                $currentGrade = "wo";
+            }
+            elseif($e->grade == "-- (BOLTER)") {
+                $currentGrade = "bolter";
+            }
+            elseif($e->grade == "--") {
+                $currentGrade = "ng";
+            }
+            elseif($e->grade == "CUT") {
+                $currentGrade = "cutpass";
+            }
+            $grades[] = '<span class="gradeBox '.$currentGrade.'">&nbsp;</span>';
+        }
+
+        foreach($grades as $g) {
+            echo $g;
+        }
+
     }
 }
 

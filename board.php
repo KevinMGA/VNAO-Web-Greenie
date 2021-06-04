@@ -22,15 +22,23 @@ $traps = $Greenie->getTraps();
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/media.css">
     <title>VNAO Greenie Board</title>
   </head>
 
-  <body>
+  <body style="background-color:<?php echo $s->color;?>;">
   	<div class="container-fluid board">
-  		<h2 class="text-center"> VFA <?php echo $s->tag; ?></h2>
-  		<h1 class="text-center"> Greenie Board </h1>
+  		<div class="row mt-3 mb-5">
+  			<div class="col-md-2 text-center">
+  				<img class="logo" src="<?php echo $s->logo;?>">
+  			</div>
+  			<div class="col-md-8">
+  				<h1 class="greenieHeader text-center"> <?php echo $s->name;?> Greenie Board </h1>
+  				<h5 class="text-center motto" style="position:relative;top:50px;"> <?php echo $s->motto;?> </h5>
+  			</div>
+  		</div>
   		<div class="table-responsive">
-  			<table class="table table-striped text-center">
+  			<table class="table table-striped text-center mb-0">
 			  <thead>
 			    <tr>
 			      <th scope="col" class="mod">MODEX</th>
@@ -56,6 +64,17 @@ $traps = $Greenie->getTraps();
 			      <th class="grades">18</th>
 			      <th class="grades">19</th>
 			      <th class="grades">20</th>
+			      <th class="grades">21</th>
+			      <th class="grades">22</th>
+			      <th class="grades">23</th>
+			      <th class="grades">24</th>
+			      <th class="grades">25</th>
+			      <th class="grades">26</th>
+			      <th class="grades">27</th>
+			      <th class="grades">28</th>
+			      <th class="grades">29</th>
+			      <th class="grades">30</th>
+			      <th class="grades">31</th>
 			    </tr>
 			  </thead>
 			  <tbody>
@@ -65,13 +84,16 @@ $traps = $Greenie->getTraps();
 			    		<td><a href="pilotlog.php?callsign?=<?php echo $p->callsign;?>"><?php echo $p->callsign;?></a></td>
 			    		<td><?php echo $Greenie->avg($p->callsign); ?></td>	
 			    		<?php
-			    			echo $Greenie->getGrade($p->callsign);
+			    			echo $Greenie->pullGrade($p->callsign);
 			    		?>
 			    	</tr>
 			   	<?php endforeach;?>
 			  </tbody>
 			</table>
   		</div>
+  		<div class="key">
+				<img class="img-responsive" src="assets/images/key.png">
+			</div>
   	</div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 

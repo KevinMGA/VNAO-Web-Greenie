@@ -23,7 +23,8 @@ $squads = $Greenie->getSquads();
     <link rel="stylesheet" href="assets/css/style.css">
     <title>VNAO Admin</title>
 
-
+    <!-- Data Tables Include -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
     <style>
       .card {
         padding:10%;
@@ -66,7 +67,7 @@ $squads = $Greenie->getSquads();
 
       
       <div class="table-responsive">
-          <table class="table table-striped text-center">
+          <table class="table table-striped text-center" id="squadTable">
           <thead>
             <tr>
               <th scope="col" class="mod">MODEX</th>
@@ -95,6 +96,17 @@ $squads = $Greenie->getSquads();
 
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
 
+
+    <script>
+      $(document).ready( function () {
+          $('#squadTable').DataTable();
+      } );
+    </script>
   </body>
 </html>

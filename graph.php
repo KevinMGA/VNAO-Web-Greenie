@@ -1,18 +1,19 @@
 <?php
-
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 require_once('config/db.php');
 require_once('lib/pdo_db.php');
 require_once('modules/greenieBoard.php');
 
 $Graph = new GreenieBoard();
 
-
-//echo $_GET['graphview'];
-
-$image = $Graph->getGraph($_GET['graphview']);
+$board = $_GET['graphview'];
 
 
-// echo '<img src="data:image/jpeg;base64,'.base64_encode( $image ).'"/>';
+$image = $Graph->getGraph($board);
+
+
 ?>
 <!doctype html>
 <html lang="en">
@@ -36,62 +37,27 @@ $image = $Graph->getGraph($_GET['graphview']);
 
 		<div class="container is-centered card mt-3">
 
+			<div class="row">
+
+				<h2 class="text-center mt-3 mb-3">Approach Charts</h2>
+				<p class="text-center">Click on a chart below, to view it's associated information</p>
+				<?php foreach($image as $i):?>
+
+					
+					<div class="col-sm-4">
+			            <div class="col-sm-12 mt-3">
+			            	<a target="_blank" href="trapview.php?trap=<?php echo $i->id;?>">
+			            		<img style="display:block;width:100%;" src="data:image/png;base64,<?php echo $i->graph;?>">
+			            	</a>
+			            </div>
+			        </div>
+					
 
 
-			<?php foreach($image as $i):?>
+				<?php endforeach;?>
 
-				<div class="text-center">
-					<h1 class="title is-size-2 mt-3"><?php echo $i->pilot;?></h1>
-				</div>
+			</div>
 
-				<hr>
-
-				<div class="container ">
-
-					<div class="row" style="padding-left:15px;">
-						<div class="col-md-6 text-justify">
-						
-							<p>Details: <span class="bold"><?php echo $i->details; ?></span></p>
-							
-						</div>
-					</div>
-
-					<div class="row" style="padding-left:15px;">
-						<div class="col-md-4 text-justify">
-							<p>Date: <span class="bold"><?php echo $i->serverDate; ?></span></p>
-							<p>Airframe: <span class="bold"><?php echo $i->airframe; ?></span></p>
-						</div>
-						<div class="col-md-4 text-justify">
-							<p>Time: <span class="bold"><?php echo $i->serverTime; ?></span></p>
-							<p>Groove Time: <span class="bold"><?php echo $i->groove; ?> seconds</span></p>
-						</div>
-						<div class="col-md-4 text-justify">
-							<p>Case: <span class="bold"><?php echo $i->_case; ?></span></p>
-							<p>Wire: <span class="bold"><?php echo $i->wire; ?></span></p>
-							
-						</div>
-					</div>
-
-					<div class="container text-center">
-						<div class="flex">
-							<div class="card">
-								<div class="card-image">
-									<figure id="result" style="display:block" class="image">
-										<img style="display:block;width:100%;" src="data:image/png;base64,<?php echo $i->graph;?>">
-									</figure>
-								</div>
-							</div>
-						</div>
-					</div>
-
-				</div>
-				
-
-			
-
-
-
-		<?php endforeach;?>
 		</div>
 		
 
