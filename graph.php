@@ -46,7 +46,7 @@ $image = $Graph->getGraph($board);
 					
 					<div class="col-sm-4">
 			            <div class="col-sm-12 mt-3">
-			            	<a target="_blank" href="trapview.php?trap=<?php echo $i->id;?>">
+			            	<a href="trapview.php?trap=<?php echo $i->id;?>">
 			            		<img style="display:block;width:100%;" src="data:image/png;base64,<?php echo $i->graph;?>">
 			            	</a>
 			            </div>

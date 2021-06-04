@@ -127,14 +127,14 @@ class GreenieBoard {
                 elseif($e->grade == "CUT") {
                     $currentGrade = "cutpass";
                 }
-                $grades .= '<span class="gradeBox '.$currentGrade.'">&nbsp;</span>';
+                $grades .= '<span class="gradeBox '.$currentGrade.'">&nbsp;&nbsp;&nbsp;</span>';
             }
             
 
 
        
 
-            echo '<td class="tip grade '.$currentGrades.'"><a class="link" target="_blank" href="graph.php?graphview='.$r->id.'"><span class="tiptext">'.$grades.'</span><span class="night '.$case.'">⬤</span></a></td>';
+            echo '<td class="tip grade '.$currentGrades.'"><a class="link text-center" target="_blank" href="graph.php?graphview='.$r->id.'"><span class="tiptext">'.$grades.'</span><span class="night '.$case.'">⬤</span></a></td>';
         }
     }
 

@@ -12,20 +12,10 @@ td a {
 td a:hover {
 	color:rgba(255, 255, 255, 0.5);
 }
-.grade {
-	max-width: 25px;
-	border:2px solid white;
-	white-space: nowrap;
-}
+
 
 .mod {
 	max-width: 75px;
-	border:2px solid white;
-	white-space: nowrap;
-}
-
-.grades {
-	max-width: 50px;
 	border:2px solid white;
 	white-space: nowrap;
 }
@@ -37,34 +27,30 @@ td a:hover {
 }
 
 .ok {
-	background-color:green !important;
+	background-color:#07861c !important;
 }
 .fair {
-	background-color:yellow !important;
+	background-color:#ffc727 !important;
 }
 .ng {
-	background:orange !important;
+	background:#f97741 !important;
 }
 .cutpass {
-	background:lightblue !important;
+	background:#3d9bea !important;
 }
 .bolter {
-	background:blue !important;
+	background:#104a81 !important;
 }
 .wo {
-	background:red !important;
+	background:#cf1b1b !important;
 }
+
 .link{
-    display:inline-block;
-    width:100%;
-    height:100%;
+
     text-decoration: none;
     
 }
-.table td {
-	margin:0px;
-	padding:5px;
-}
+
 .night {
 	color:black;
 	font-size: 24px;
@@ -80,12 +66,6 @@ td a:hover {
 	visibility: visible;
 }
 
-
-
-
-
-
-
 .tip .tiptext {
   visibility: hidden;
   width: 10%;
@@ -100,19 +80,14 @@ td a:hover {
   text-align: center;
 }
 
-
 .tip:hover .tiptext {
   visibility: visible;
 }
 
-
 .board  {
 	padding:2%;
 }
-table {
-	background:#767575;
-	
-}
+
 table tr th {
 	background-color:#545454 !important;
 }
@@ -127,8 +102,9 @@ table tr th {
 	color:white;
 	font-size: 4.5rem;
 	position: relative;
-	top:50px;
+	top:20px;
 	font-family: 'Allerta Stencil', sans-serif;
+	margin-bottom: 0px;
 }
 .motto {
 	color:white;
@@ -141,14 +117,20 @@ table tr th {
 	margin:0 auto;
 }
 .table>:not(caption)>*>* {
-	background-color:grey;
+	
 }
 
+
 .key {
-	width:350px;
-	float: right;
+	width:250px !important;
 }
-.key img {
-	width: 100%;
+/*
+.icon {
+	background-image:url("http://localhost/GreenieBoard/assets/images/147BG.png");
+	background-position: top;
+	background-repeat: no-repeat;
+	background-size: 75px 75px;
+	opacity: .2;
 }
+*/
 

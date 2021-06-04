@@ -24,25 +24,55 @@ $traps = $Greenie->getTraps();
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/media.css">
     <title>VNAO Greenie Board</title>
+
+    <style>
+    	
+    	table {
+    		/* background:#f7f7f7; */
+    		background:url("<?php echo $s->BGLogo;?>") <?php echo $s->tableBackgroundColor;?> /*#f7f7f7*/;
+    		background-repeat: no-repeat;
+    		background-size:contain;
+    		background-position: center;
+    	}
+    	table tr th {
+    		background-color:<?php echo $s->tableHeaderColor;?> /* #e1e1e1 */ !important;
+    		color:<?php echo $s->tableHeaderFontColor;?> /* #817d7a */ !important;
+    	}
+    	table tr td {
+    		color:<?php echo $s->tableFontColor;?> /* black */;
+    	}
+    	table tr td a {
+    		color:<?php echo $s->tableFontColor;?> /* black */;
+    	}
+    	table tr td a:hover {
+    		color:<?php echo $s->tableFontColor;?> /* black */;
+    	}
+    	.tableCall {
+    		text-align: left !important
+    	}
+    	table .callsignHeader {
+    		min-width:50px !important;
+    	}
+    </style>
   </head>
 
-  <body style="background-color:<?php echo $s->color;?>;">
+  <body style="background-color:<?php echo $s->background_color;?>;">
   	<div class="container-fluid board">
   		<div class="row mt-3 mb-5">
   			<div class="col-md-2 text-center">
   				<img class="logo" src="<?php echo $s->logo;?>">
   			</div>
   			<div class="col-md-8">
-  				<h1 class="greenieHeader text-center"> <?php echo $s->name;?> Greenie Board </h1>
-  				<h5 class="text-center motto" style="position:relative;top:50px;"> <?php echo $s->motto;?> </h5>
+  				<h1 class="greenieHeader text-center" style="color:<?php echo $s->head_font_color;?>;"> <?php echo $s->name;?> Greenie Board </h1>
+  				<h5 class="text-center motto" style="position:relative;top:50px;color:<?php echo $s->head_font_color;?>;"> <?php echo $s->motto;?> </h5>
   			</div>
   		</div>
   		<div class="table-responsive">
-  			<table class="table table-striped text-center mb-0">
+  			<table class="table text-center mb-0">
 			  <thead>
 			    <tr>
-			      <th scope="col" class="mod">MODEX</th>
-			      <th scope="col">CALLSIGN</th>
+			      <th scope="col" class="mod">MOD</th>
+			      <th scope="col" class="callsignHeader">CALLSIGN</th>
 			      <th class="avg">AVG</th>
 			      <th class="grades">1</th>
 			      <th class="grades">2</th>
@@ -81,7 +111,8 @@ $traps = $Greenie->getTraps();
 			  	<?php foreach($pilots as $p):?>
 			    	<tr>
 			    		<td><?php echo $p->modex;?></td>
-			    		<td><a href="pilotlog.php?callsign?=<?php echo $p->callsign;?>"><?php echo $p->callsign;?></a></td>
+			    		
+			    		<td class="tableCall"><a href="pilotlog.php?callsign?=<?php echo $p->callsign;?>"><?php echo $p->callsign;?></a></td>
 			    		<td><?php echo $Greenie->avg($p->callsign); ?></td>	
 			    		<?php
 			    			echo $Greenie->pullGrade($p->callsign);
@@ -91,9 +122,32 @@ $traps = $Greenie->getTraps();
 			  </tbody>
 			</table>
   		</div>
-  		<div class="key">
-				<img class="img-responsive" src="assets/images/key.png">
-			</div>
+
+  		<div class="row mt-3">
+  			<div class="col-md-2">
+  				<div class="key">
+					<p><span class="key ok">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> OK - Minimum deviations with good corrections.</p>	
+				</div>
+				<div class="key">
+					<p><span class="key fair">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> Fair - Reasonable deviations with average corrections</p>	
+				</div>
+				<div class="key">
+					<p><span class="key ng">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> No Grade - Below average corrections but a safe pass</p>	
+				</div>
+				<div class="key">
+					<p><span class="key cutpass">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> Cut - Unsafe, gross deviations inside the wave off window</p>	
+				</div>
+  			</div>
+  			<div class="col">
+				<div class="key">
+					<p><span class="key wo">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> Wave Off</p>	
+				</div>
+				<div class="key">
+					<p><span class="key bolter">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> Bolter - tailhook did not catch a wire/aircraft went around for another pass</p>	
+				</div>
+  			</div>
+  		</div>
+
   	</div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 
