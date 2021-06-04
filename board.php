@@ -55,7 +55,7 @@ $traps = $Greenie->getTraps();
     	}
     	.key {
 			width:250px !important;
-			color:<?php echo $s->tableFontColor;?>;
+			color:<?php echo $s->tableFontColor;?> /* black */;
 		}
     </style>
   </head>
