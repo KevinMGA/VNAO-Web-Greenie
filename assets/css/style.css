@@ -116,10 +116,6 @@ table tr th {
 	text-align: center;
 	margin:0 auto;
 }
-.table>:not(caption)>*>* {
-	
-}
-
 
 .key {
 	width:250px !important;

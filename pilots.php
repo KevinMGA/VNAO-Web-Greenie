@@ -63,7 +63,9 @@ if($_SESSION['type'] === '1') {
         text-decoration: none:
         color:black;
       }
-
+      .table>:not(caption)>*>* {
+        background-color:grey;
+      }
     </style>
   </head>
 
@@ -79,7 +81,7 @@ if($_SESSION['type'] === '1') {
 
       
       <div class="table-responsive mt-3 mb-5">
-          <table class="table table-striped text-center mt-5 mb-3" id="pilotTable">
+          <table style="background-color:grey;" class="table text-center mt-5 mb-3" id="pilotTable">
           <thead>
             <tr>
               <th scope="col" class="mod"><?php echo $colOne;?></th>

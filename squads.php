@@ -26,6 +26,7 @@ $squads = $Greenie->getSquads();
     <!-- Data Tables Include -->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
     <style>
+     
       .card {
         padding:10%;
         transition: all 300ms ease;
@@ -51,7 +52,9 @@ $squads = $Greenie->getSquads();
         text-decoration: none:
         color:black;
       }
-
+      .table>:not(caption)>*>* {
+        background-color:grey;
+      }
     </style>
   </head>
 
@@ -67,7 +70,7 @@ $squads = $Greenie->getSquads();
 
       
       <div class="table-responsive">
-          <table class="table table-striped text-center" id="squadTable">
+          <table style="background-color:grey !important;" class="table text-center" id="squadTable">
           <thead>
             <tr>
               <th scope="col" class="mod">MODEX</th>
