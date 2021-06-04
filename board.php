@@ -50,11 +50,8 @@ $traps = $Greenie->getTraps();
     	.tableCall {
     		text-align: left !important
     	}
-    	table .callsignHeader {
-    		min-width:50px !important;
-    	}
+    	
     	.key {
-			width:250px !important;
 			color:<?php echo $s->tableFontColor;?> /* black */;
 		}
     </style>
@@ -72,7 +69,7 @@ $traps = $Greenie->getTraps();
   			</div>
   		</div>
   		<div class="table-responsive">
-  			<table class="table text-center mb-0">
+  			<table class="table text-center ">
 			  <thead>
 			    <tr>
 			      <th scope="col" class="mod">MOD</th>
@@ -128,7 +125,7 @@ $traps = $Greenie->getTraps();
   		</div>
 
   		<div class="row mt-3">
-  			<div class="col-md-2">
+  			<div class="col-md-3">
   				<div class="key">
 					<p><span class="key ok">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> OK - Minimum deviations with good corrections.</p>	
 				</div>
@@ -142,7 +139,7 @@ $traps = $Greenie->getTraps();
 					<p><span class="key cutpass">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> Cut - Unsafe, gross deviations inside the wave off window</p>	
 				</div>
   			</div>
-  			<div class="col">
+  			<div class="col-md-3">
 				<div class="key">
 					<p><span class="key wo">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> Wave Off</p>	
 				</div>

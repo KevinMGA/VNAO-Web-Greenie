@@ -5,6 +5,9 @@
     .greenieHeader {
         font-size: 3.5rem;
     }
+    .callsignHeader {
+		max-width:300px !important;
+	}
 }
 @media (max-width:1400px) {
     tr, td {
@@ -22,6 +25,17 @@
     .greenieHeader {
         font-size: 3rem;
     }
+    .callsignHeader {
+		min-width:200px !important;
+	}
+	.logo {
+    	width:150px !important;
+    }
+    .table>:not(caption)>*>* {
+	    padding: .42rem .42rem;
+
+	}
+
 }
 
 
