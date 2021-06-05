@@ -59,21 +59,29 @@ $traps = $Greenie->getTraps();
 
   <body style="background-color:<?php echo $s->background_color;?>;">
   	<div class="container-fluid board">
-  		<div class="row mt-3 mb-5">
-  			<div class="col-md-2 text-center">
-  				<img class="logo" src="<?php echo $s->logo;?>">
-  			</div>
-  			<div class="col-md-8">
-  				<?php
-  				if($s->name != "Argonauts") {
-  					?>
-  					<h1 class="greenieHeader text-center" style="color:<?php echo $s->head_font_color;?>;"> <?php echo $s->name;?> Greenie Board </h1>
-  					<?php
-  				}	
-  				?>
-  				<h5 class="text-center motto" style="position:relative;top:50px;color:<?php echo $s->head_font_color;?>;"> <?php echo $s->motto;?> </h5>
-  			</div>
-  		</div>
+  		<?php
+		if($s->name != "Argonauts") {
+			?>
+			<div class="row mt-3 mb-5">
+	  			<div class="col-md-2 text-center">
+	  				<img class="logo" src="<?php echo $s->logo;?>">
+	  			</div>
+	  			<div class="col-md-8">
+	  				<?php
+	  				if($s->name != "Argonauts") {
+	  					?>
+	  					
+	  					<?php
+	  				}	
+	  				?>
+	  				<h1 class="greenieHeader text-center" style="color:<?php echo $s->head_font_color;?>;"> <?php echo $s->name;?> Greenie Board </h1>
+	  				<h5 class="text-center motto" style="position:relative;top:50px;color:<?php echo $s->head_font_color;?>;"> <?php echo $s->motto;?> </h5>
+	  			</div>
+	  		</div>
+			<?php
+		}	
+		?>
+  		
   		<div class="table-responsive">
   			<table class="table text-center ">
 			  <thead>
