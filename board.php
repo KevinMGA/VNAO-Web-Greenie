@@ -61,7 +61,13 @@ $traps = $Greenie->getTraps();
 				padding:2%;
 			}
 			<?php
-		}	
+		}	else {
+			?>
+			.container-fluid {
+				padding:0px !important;
+			}
+			<?php
+		}
 		?>
     </style>
   </head>
