@@ -39,14 +39,14 @@ class GreenieBoard {
 
     public function avg($modex) {
 
-        $sql = "select * from board where pilot = '$modex' ORDER BY appDate";
+        $sql = "select * from board where pilot = '$modex'";
         $this->db->query($sql);
         $results = $this->db->resultset();
         $score = array();
         foreach($results as $r) {
-           
-            $score[] = floatval($r->points);
-            
+            if($r->wire != "1") {
+                $score[] = floatval($r->score);
+            } 
         }
         $n = count($score);
         $sum = 0;
@@ -60,7 +60,7 @@ class GreenieBoard {
             $ret = 0;
         }
 
-        return number_format($ret, 2);
+        return floatval($ret);
     }
 
     public function pullGrade($a) {
