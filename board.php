@@ -54,14 +54,6 @@ $traps = $Greenie->getTraps();
 			color:<?php echo $s->tableFontColor;?> /* black */;
 		}
 
-		table {
-		    vertical-align: bottom !important;
-		}
-
-		table tr
-		{
-		    border:1px solid black !important;
-		}
 		<?php
 		if($s->name != "Argonauts") {
 			?>
