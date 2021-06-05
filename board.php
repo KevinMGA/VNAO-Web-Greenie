@@ -65,7 +65,7 @@ $traps = $Greenie->getTraps();
   			</div>
   			<div class="col-md-8">
   				<?php
-  				if($s->name != "") {
+  				if($s->name != "Argonauts") {
   					?>
   					<h1 class="greenieHeader text-center" style="color:<?php echo $s->head_font_color;?>;"> <?php echo $s->name;?> Greenie Board </h1>
   					<?php
