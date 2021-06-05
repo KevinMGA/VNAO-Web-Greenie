@@ -39,14 +39,14 @@ class GreenieBoard {
 
     public function avg($modex) {
 
-        $sql = "select * from board where pilot = '$modex' ORDER BY datetime";
+        $sql = "select * from board where pilot = '$modex' ORDER BY appDate";
         $this->db->query($sql);
         $results = $this->db->resultset();
         $score = array();
         foreach($results as $r) {
-            if($r->wire != "1") {
-                $score[] = floatval($r->points);
-            } 
+           
+            $score[] = floatval($r->points);
+            
         }
         $n = count($score);
         $sum = 0;
