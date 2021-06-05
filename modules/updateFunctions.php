@@ -97,14 +97,19 @@ class Auto {
 
             if($re < 1.49) {
                 $final = "CUT";
+                $p = 0;
             }  elseif($re > 1.49 && $re < 2.49) {
                 $final = "NG";
+                $p = 2;
             }  elseif($re > 2.49 && $re < 3.49) {
                 $final = "(OK)";
+                $p = 3;
             }  elseif($re > 3.49 && $re < 4.49) {
                 $final = "OK";
+                $p = 4;
             }  elseif($re > 4.49) {
                 $final = "_OK_";
+                $p = 5;
             } 
 
             /*
@@ -124,9 +129,9 @@ class Auto {
             */
             // Debug 
 
-            echo 'PILOT: ' . $br->pilot. ' | Grade: ' . $final.'  | Score: ' .$re. '<br>';
+            echo 'PILOT: ' . $br->pilot. ' | Grade: ' . $final.'  | Score: ' .$p. '<br>';
 
-            $sql = "UPDATE board SET grade = '$final', score = '$re' WHERE board_ID = '$br->board_ID'";
+            $sql = "UPDATE board SET grade = '$final', score = '$p' WHERE board_ID = '$br->board_ID'";
             $this->db->query($sql);
             $end = $this->db->execute();
         }
