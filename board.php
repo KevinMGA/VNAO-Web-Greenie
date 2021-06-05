@@ -54,6 +54,15 @@ $traps = $Greenie->getTraps();
     	.key {
 			color:<?php echo $s->tableFontColor;?> /* black */;
 		}
+		<?php
+		if($s->name != "Argonauts") {
+			?>
+			.board  {
+				padding:2%;
+			}
+			<?php
+		}	
+		?>
     </style>
   </head>
 
@@ -67,13 +76,6 @@ $traps = $Greenie->getTraps();
 	  				<img class="logo" src="<?php echo $s->logo;?>">
 	  			</div>
 	  			<div class="col-md-8">
-	  				<?php
-	  				if($s->name != "Argonauts") {
-	  					?>
-	  					
-	  					<?php
-	  				}	
-	  				?>
 	  				<h1 class="greenieHeader text-center" style="color:<?php echo $s->head_font_color;?>;"> <?php echo $s->name;?> Greenie Board </h1>
 	  				<h5 class="text-center motto" style="position:relative;top:50px;color:<?php echo $s->head_font_color;?>;"> <?php echo $s->motto;?> </h5>
 	  			</div>

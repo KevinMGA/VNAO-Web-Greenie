@@ -84,10 +84,6 @@ td a:hover {
   visibility: visible;
 }
 
-.board  {
-	padding:2%;
-}
-
 table tr th {
 	background-color:#545454 !important;
 }
