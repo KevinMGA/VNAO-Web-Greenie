@@ -60,7 +60,7 @@ class GreenieBoard {
             $ret = 0;
         }
 
-        return floatval($ret);
+        return number_format($ret, 2);
     }
 
     public function pullGrade($a) {
