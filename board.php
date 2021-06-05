@@ -64,7 +64,13 @@ $traps = $Greenie->getTraps();
   				<img class="logo" src="<?php echo $s->logo;?>">
   			</div>
   			<div class="col-md-8">
-  				<h1 class="greenieHeader text-center" style="color:<?php echo $s->head_font_color;?>;"> <?php echo $s->name;?> Greenie Board </h1>
+  				<?php
+  				if($s->name != "") {
+  					?>
+  					<h1 class="greenieHeader text-center" style="color:<?php echo $s->head_font_color;?>;"> <?php echo $s->name;?> Greenie Board </h1>
+  					<?php
+  				}	
+  				?>
   				<h5 class="text-center motto" style="position:relative;top:50px;color:<?php echo $s->head_font_color;?>;"> <?php echo $s->motto;?> </h5>
   			</div>
   		</div>
