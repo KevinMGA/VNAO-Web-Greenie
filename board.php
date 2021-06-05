@@ -32,6 +32,7 @@ $traps = $Greenie->getTraps();
     		background-repeat: no-repeat;
     		background-size:contain;
     		background-position: center;
+    		vertical-align: middle !important;
     	}
     	table tr th {
     		background-color:<?php echo $s->tableHeaderColor;?> /* #e1e1e1 */ !important;
