@@ -26,6 +26,9 @@ $traps = $Greenie->getTraps();
     <title>VNAO Greenie Board</title>
 
     <style>
+    	body {
+    		x-overflow:hidden;
+    	}
     	
     	table {
     		/* background:#f7f7f7; */
@@ -65,6 +68,9 @@ $traps = $Greenie->getTraps();
 			?>
 			.container-fluid {
 				padding:0px !important;
+			}
+			.row {
+			    --bs-gutter-x: 0rem;
 			}
 			<?php
 		}
