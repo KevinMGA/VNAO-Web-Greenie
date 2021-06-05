@@ -39,7 +39,7 @@ class GreenieBoard {
 
     public function avg($modex) {
 
-        $sql = "select * from traps where pilot = '$modex' ORDER BY datetime";
+        $sql = "select * from board where pilot = '$modex' ORDER BY datetime";
         $this->db->query($sql);
         $results = $this->db->resultset();
         $score = array();
