@@ -82,6 +82,9 @@ class GreenieBoard {
             elseif($r->grade == "OWO") {
                 $currentGrades = "wo";
             }
+            elseif($r->grade == "WOP") {
+                $currentGrades = "wo";
+            }
             elseif($r->grade == "-- (BOLTER)") {
                 $currentGrades = "bolter";
             }
@@ -119,6 +122,12 @@ class GreenieBoard {
                     $currentGrade = "ok";
                 }
                 elseif($e->grade == "WO") {
+                    $currentGrade = "wo";
+                }
+                elseif($e->grade == "OWO") {
+                    $currentGrade = "wo";
+                }
+                elseif($e->grade == "WOP") {
                     $currentGrade = "wo";
                 }
                 elseif($e->grade == "-- (BOLTER)") {
