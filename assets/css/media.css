@@ -11,11 +11,40 @@
 }
 @media (max-width:1400px) {
     tr, td {
-        font-size: 16px;
+        font-size: 14px;
     }
     .greenieHeader {
-        font-size: 3.5rem;
+        font-size: 3rem;
     }
+    .callsignHeader {
+		min-width:200px !important;
+	}
+	.logo {
+    	width:150px !important;
+    }
+    .table>:not(caption)>*>* {
+	    padding: .42rem .42rem;
+
+	}
+}
+
+@media (max-width:1300px) {
+    tr, td {
+        font-size: 14px;
+    }
+    .greenieHeader {
+        font-size: 3rem;
+    }
+    .callsignHeader {
+		min-width:200px !important;
+	}
+	.logo {
+    	width:150px !important;
+    }
+    .table>:not(caption)>*>* {
+	    padding: .42rem .42rem;
+
+	}
 }
 
 @media (max-width:1200px) {
