@@ -1,8 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 require_once('config/db.php');
 require_once('lib/pdo_db.php');
 require_once('modules/greenieBoard.php');
@@ -56,6 +52,15 @@ $traps = $Greenie->getTraps();
     	
     	.key {
 			color:<?php echo $s->tableFontColor;?> /* black */;
+		}
+
+		table {
+		    vertical-align: bottom !important;
+		}
+
+		table tr
+		{
+		    border:1px solid black !important;
 		}
 		<?php
 		if($s->name != "Argonauts") {
