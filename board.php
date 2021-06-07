@@ -153,7 +153,7 @@ $traps = $Greenie->getTraps();
   		<div class="row mt-3">
   			<div class="col-md-3">
   				<div class="key">
-					<p><span class="key ok">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> OK - Minimum deviations with good corrections.</p>	
+					<p><span class="key ok">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> OK - Minimum deviations with good corrections</p>	
 				</div>
 				<div class="key">
 					<p><span class="key fair">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> Fair - Reasonable deviations with average corrections</p>	
@@ -170,7 +170,7 @@ $traps = $Greenie->getTraps();
 					<p><span class="key wo">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> Wave Off</p>	
 				</div>
 				<div class="key">
-					<p><span class="key bolter">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> Bolter - tailhook did not catch a wire/aircraft went around for another pass</p>	
+					<p><span class="key bolter">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> Bolter - Tailhook did not catch a wire/aircraft went around for another pass</p>	
 				</div>
   			</div>
   		</div>
