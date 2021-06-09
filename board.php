@@ -142,7 +142,13 @@ $squad = $Greenie->getSquad($_GET['board']);
 			    	<tr>
 			    		<td><?php echo $p->modex;?></td>
 			    		
-			    		<td class="tableCall"><a href="pilotlog.php?callsign?=<?php echo $p->callsign;?>"><?php echo $p->callsign;?></a></td>
+			    		<?php
+
+						if($s->name == "Argonauts") {
+							$name = explode(" ", $p->callsign);
+						}	
+						?>
+			    		<td class="tableCall"><a href="pilotlog.php?callsign?=<?php echo $p->callsign;?>"><?php echo $name[1];?></a></td>
 			    		<td><?php echo $Greenie->avg($p->callsign); ?></td>	
 			    		<?php
 			    			echo $Greenie->pullGrade($p->callsign);
