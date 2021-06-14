@@ -9,7 +9,7 @@ require_once('modules/greenieBoard.php');
 
 $Greenie = new GreenieBoard();
 $squad = $Greenie->getSquad($_GET['board']);
-$traps = $Greenie->getTraps();
+//$traps = $Greenie->getTraps();
 
 ?>
 
