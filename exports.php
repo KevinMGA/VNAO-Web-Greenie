@@ -8,6 +8,8 @@ $string = $_GET['export'];
 
 if($string == 'best_trap') {
 
+	$Export->bestTrap();
+
 }
 
 ?>
