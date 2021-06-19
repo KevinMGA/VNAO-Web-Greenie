@@ -66,8 +66,26 @@ $image = $Graph->getTrap($trap);
 						</div>
 						<div class="col-md-4 text-justify">
 							<p>Case: <span class="bold"><?php echo $i->_case; ?></span></p>
-							<p>Wire: <span class="bold"><?php echo $i->wire; ?></span></p>
-							
+
+							<?php
+								 if($i->wire == '99') {
+								 	echo '<p>Wire: <span class="bold">4</span></p>';
+
+								 } elseif($i->wire == '4') {
+								 	echo '<p>Wire: <span class="bold">3</span></p>';
+
+								 } elseif($i->wire == '3') {
+								 	echo '<p>Wire: <span class="bold">2</span></p>';
+								 	
+								 } elseif($i->wire == '2') {
+								 	echo '<p>Wire: <span class="bold">1</span></p>';
+								 	
+								 } elseif($i->wire == '1') {
+								 	echo '<p>Wire: <span class="bold">1</span></p>';
+								 } else {
+								 	echo '<p>Wire: <span class="bold">No Wire</span></p>';
+								 }
+							?>						
 						</div>
 					</div>
 
