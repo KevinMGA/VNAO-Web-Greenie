@@ -260,7 +260,12 @@ $Bolter = $Graph->getBolter($pilot);
    
 
 
-
+    public function totalTraps($c) {
+        $sql = "SELECT id FROM traps WHERE pilot = '$c'";
+        $this->db->query($sql);
+        $results = $this->db->resultset();
+        return count($results);
+    }
 
 
     

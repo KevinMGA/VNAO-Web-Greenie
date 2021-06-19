@@ -104,6 +104,7 @@ $squad = $Greenie->getSquad($_GET['board']);
 			      <th scope="col" class="mod">MOD</th>
 			      <th scope="col" class="callsignHeader">CALLSIGN</th>
 			      <th class="avg">AVG</th>
+			      <th class="avg">TRAPS</th>
 			      <th class="grades">1</th>
 			      <th class="grades">2</th>
 			      <th class="grades">3</th>
@@ -157,6 +158,7 @@ $squad = $Greenie->getSquad($_GET['board']);
 						?>
 			    		
 			    		<td><?php echo $Greenie->avg($p->callsign); ?></td>	
+			    		<td><?php echo $Greenie->totalTraps($p->callsign);?></td>
 			    		<?php
 			    			echo $Greenie->pullGrade($p->callsign);
 			    		?>
