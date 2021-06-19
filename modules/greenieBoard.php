@@ -150,66 +150,7 @@ class GreenieBoard {
         }
     }
 
-/*
-    public function getGrade($callsign) {
 
-        $up = new Updates();
-
-        $sql = "select * FROM traps where pilot = :callsign ORDER BY datetime";
-        $this->db->query($sql);
-        $this->db->bind(':callsign', $callsign);
-        $result = $this->db->resultset();
-        
-        $up->updateGrades($callsign);
-
-        foreach($result as $j) {
-                
-            if($j->grade != "WOFD") {
-
-                // Grade Colors
-                if($j->grade == "(OK)") {
-                    $currentGrade = "fair";
-                }
-                elseif($j->grade == "OK") {
-                    $currentGrade = "ok";
-                }
-                elseif($j->grade == "WO") {
-                    $currentGrade = "wo";
-                }
-                elseif($j->grade == "-- (BOLTER)") {
-                    $currentGrade = "bolter";
-                }
-                elseif($j->grade == "--") {
-                    $currentGrade = "ng";
-                }
-                elseif($j->grade == "CUT") {
-                    $currentGrade = "cutpass";
-                }
-                if($j->wire == "1") {
-                    $currentGrade = "ng";
-                }
-                // CASE 3
-                if($j->_case == "1") {
-                    $case = 'hidden';
-                }
-                elseif($j->_case == "2") {
-                    $case = 'visible';
-                }
-                elseif($j->_case == "3") {
-                    $case = 'visible';
-                }
-                // Final Displayed Grade
-                if($j->grade == "--") {
-                    $newGrade = "NG";
-                } else {
-                    $newGrade = $j->grade;
-                }
-
-                echo '<td class="tip grade '.$currentGrade.'"><a class="link" target="_blank" href="graph.php?graphview='.$j->id.'"><span class="tiptext">'.$j->details.'<br>'.$newGrade.'</span><span class="night '.$case.'">⬤</span></a></td>';
-            }
-        }
-    }
-*/
     public function getGraph($id) {
 
         $sql = "SELECT board_ID FROM board where id = '$id'";
@@ -288,6 +229,39 @@ class GreenieBoard {
         
 
     }
+
+
+
+/*
+
+$uni = $Graph->getUni($pilot);
+$Ok = $Graph->getOk($pilot);
+$Fair = $Graph->getFair($pilot);
+$NG = $Graph->getNG($pilot);
+$WO = $Graph->getWO($pilot);
+$Bolter = $Graph->getBolter($pilot);
+
+*/
+    public function getProfile($c) {
+        $sql = "SELECT * FROM pilots WHERE callsign = '$c'";
+        $this->db->query($sql);
+        $results = $this->db->resultset();
+        return $results;
+    }
+
+
+
+    public function countGrade($c) {
+        $sql = "SELECT grade, wire FROM traps WHERE pilot = '$c'";
+        $this->db->query($sql);
+        $results = $this->db->resultset();
+        return $results;
+    }
+   
+
+
+
+
 
     
 }

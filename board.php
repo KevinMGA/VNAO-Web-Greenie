@@ -147,11 +147,11 @@ $squad = $Greenie->getSquad($_GET['board']);
 						if($s->name == "Argonauts") {
 							$name = explode(" ", $p->callsign);
 							?>
-							<td class="tableCall"><a href="pilotlog.php?callsign?=<?php echo $p->callsign;?>"><?php echo $name[1];?></a></td>
+							<td class="tableCall"><a href="pilotlog.php?callsign=<?php echo $p->callsign;?>"><?php echo $name[1];?></a></td>
 							<?php
 						} else {
 							?>
-							<td class="tableCall"><a href="pilotlog.php?callsign?=<?php echo $p->callsign;?>"><?php echo $p->callsign;?></a></td>
+							<td class="tableCall"><a href="pilotlog.php?callsign=<?php echo $p->callsign;?>"><?php echo $p->callsign;?></a></td>
 							<?php
 						}
 						?>
