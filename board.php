@@ -84,6 +84,7 @@ $squad = $Greenie->getSquad($_GET['board']);
   		<?php
 		if($s->name != "Argonauts") {
 			?>
+			<!--
 			<div class="row mt-3 mb-5">
 	  			<div class="col-md-2 text-center">
 	  				<img class="logo" src="<?php echo $s->logo;?>">
@@ -93,6 +94,7 @@ $squad = $Greenie->getSquad($_GET['board']);
 	  				<h5 class="text-center motto" style="position:relative;top:50px;color:<?php echo $s->head_font_color;?>;"> <?php echo $s->motto;?> </h5>
 	  			</div>
 	  		</div>
+	  		-->
 			<?php
 		}	
 		?>
@@ -152,7 +154,10 @@ $squad = $Greenie->getSquad($_GET['board']);
 							<?php
 						} else {
 							?>
-							<td class="tableCall"><a href="pilotlog.php?callsign=<?php echo $p->callsign;?>"><?php echo $p->callsign;?></a></td>
+							<td class="tableCall"><a href="pilotlog.php?callsign=<?php echo $p->callsign;?>"><?php echo $name[1];?></a></td>
+							<!--
+							<td class="tableCall"><a href="pilotlog.php?callsign=<?php // echo $p->callsign;?>"><?php // echo $p->callsign;?></a></td>
+							-->
 							<?php
 						}
 						?>
