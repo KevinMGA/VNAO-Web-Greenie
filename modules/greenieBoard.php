@@ -270,7 +270,7 @@ $Bolter = $Graph->getBolter($pilot);
 
     public function totalTraps($c) {
         $currentMonth = date('m');
-        $sql = "SELECT id FROM traps WHERE pilot = '$c'";
+        $sql = "SELECT id FROM traps WHERE pilot = '$c' AND MONTH(datetime) = '$currentMonth'";
         $this->db->query($sql);
         $results = $this->db->resultset();
         return count($results);
