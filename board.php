@@ -143,6 +143,7 @@ $squad = $Greenie->getSquad($_GET['board']);
 			  </thead>
 			  <tbody>
 			  	<?php foreach($pilots as $p):?>
+				  <?php var_dump($p);?>
 			    	<tr>
 			    		<td><?php echo $p->modex;?></td>
 			    		
