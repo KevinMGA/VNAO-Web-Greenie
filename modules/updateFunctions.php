@@ -19,6 +19,7 @@ class Auto {
         $result = $this->db->execute();
     }
 
+
     public function sameDay() {
         $sql = "SELECT a.id, b.board_ID FROM traps AS a LEFT JOIN board AS b ON a.pilot = b.pilot WHERE DATE(a.datetime) = DATE(b.appDate)";
         $this->db->query($sql);

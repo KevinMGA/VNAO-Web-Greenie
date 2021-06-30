@@ -65,7 +65,7 @@ class GreenieBoard {
 
     public function pullGrade($a) {
         $currentMonth = date('m');
-        $sql = "SELECT *, MONTH(appDate) as currentMonth FROM board WHERE pilot = '$a' AND MONTH(appDate) = '$currentMonth' ORDER BY appDate";
+        $sql = "SELECT * FROM board WHERE pilot = '$a' AND MONTH(appDate) = '$currentMonth' ORDER BY appDate";
         $this->db->query($sql);
         $results = $this->db->resultset();
 
@@ -270,7 +270,7 @@ $Bolter = $Graph->getBolter($pilot);
 
     public function totalTraps($c) {
         $currentMonth = date('m');
-        $sql = "SELECT id, MONTH(datetime) as currentMonth FROM traps WHERE pilot = '$c' AND MONTH(datetime) = '$currentMonth'";
+        $sql = "SELECT id FROM traps WHERE pilot = '$c' AND MONTH(datetime) = '$currentMonth'";
         $this->db->query($sql);
         $results = $this->db->resultset();
         return count($results);
