@@ -10,7 +10,6 @@ require_once('modules/greenieBoard.php');
 
 $Greenie = new GreenieBoard();
 $squad = $Greenie->getSquad($_GET['board']);
-//$traps = $Greenie->getTraps();
 
 ?>
 
@@ -168,7 +167,7 @@ $squad = $Greenie->getSquad($_GET['board']);
 			    		<td><?php echo $Greenie->avg($p->callsign); ?></td>	
 			    		<td><?php echo $Greenie->totalTraps($p->callsign);?></td>
 			    		<?php
-			    			echo $Greenie->pullGrade($p->callsign);
+			    			echo $Greenie->pullGrade($p->callsign);	
 			    		?>
 			    	</tr>
 			   	<?php endforeach;?>

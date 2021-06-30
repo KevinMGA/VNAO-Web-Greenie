@@ -38,8 +38,8 @@ class GreenieBoard {
     }
 
     public function avg($modex) {
-
-        $sql = "select * from board where pilot = '$modex'";
+        $currentMonth = date('m');
+        $sql = "select * from board where pilot = '$modex' AND MONTH(appDate) = '$currentMonth'";
         $this->db->query($sql);
         $results = $this->db->resultset();
         $score = array();
@@ -64,12 +64,12 @@ class GreenieBoard {
     }
 
     public function pullGrade($a) {
-        $sql = "SELECT * FROM board WHERE pilot = '$a' ORDER BY appDate";
+        $currentMonth = date('m');
+        $sql = "SELECT *, MONTH(appDate) as currentMonth FROM board WHERE pilot = '$a' AND MONTH(appDate) = '$currentMonth' ORDER BY appDate";
         $this->db->query($sql);
         $results = $this->db->resultset();
 
         foreach($results as $r) {
-
             if($r->grade == "(OK)") {
                 $currentGrades = "fair";
             }
@@ -94,7 +94,7 @@ class GreenieBoard {
             elseif($r->grade == "CUT") {
                 $currentGrades = "cutpass";
             }
-           
+        
             
             // CASE 3
             if($r->_case == "1") {
@@ -141,13 +141,21 @@ class GreenieBoard {
                 }
                 $grades .= '<span class="gradeBox '.$currentGrade.'">&nbsp;&nbsp;&nbsp;</span>';
             }
-            
-
-
-       
 
             echo '<td class="tip grade '.$currentGrades.'"><a class="link text-center" target="_blank" href="graph.php?graphview='.$r->id.'"><span class="tiptext">'.$grades.'</span><span class="night '.$case.'">⬤</span></a></td>';
         }
+          
+    }
+
+    public function dateTest($a) {
+        $sql = "SELECT *, MONTH(appDate) as currentMonth FROM board WHERE pilot = '$a' ORDER BY appDate";
+
+        
+        $this->db->query($sql);
+        $results = $this->db->resultset();
+
+        var_dump($results);
+
     }
 
 
@@ -261,7 +269,8 @@ $Bolter = $Graph->getBolter($pilot);
 
 
     public function totalTraps($c) {
-        $sql = "SELECT id FROM traps WHERE pilot = '$c'";
+        $currentMonth = date('m');
+        $sql = "SELECT id, MONTH(datetime) as currentMonth FROM traps WHERE pilot = '$c' AND MONTH(datetime) = '$currentMonth'";
         $this->db->query($sql);
         $results = $this->db->resultset();
         return count($results);
