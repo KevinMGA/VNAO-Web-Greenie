@@ -83,85 +83,32 @@ $Greenie = new GreenieBoard();
       
       <div class="row mt-5">
 
-        <div class="col-md-4">
-          <a class="catA" href="#">
+        <div class="col-md-6">
+          <a class="catA" href="managepilots.php">
             <div class="card cat text-center" style="">
                 <div class="card-body">
-                  <h5 class="card-title">Add Pilot</h5>
+                  <h5 class="card-title">Manage Pilots</h5>
                 </div>
             </div>
           </a>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
           <a class="catA" href="#">
             <div class="card cat text-center" style="">
               
                 <div class="card-body">
-                  <h5 class="card-title">Remove Pilot</h5>
+                  <h5 class="card-title">Manage Squads</h5>
                 </div>
             
             </div>
           </a>
         </div>
-        <div class="col-md-4">
-          <a class="catA" href="#">
-            <div class="card cat text-center" style="">
-              
-                <div class="card-body">
-                  <h5 class="card-title">Update Pilot</h5>
-                </div>
-             
-            </div>
-          </a>
-        </div>
-
+       
       </div>
 
-      <?php 
+     
 
-      if($_SESSION['type'] === '1') {
-      ?>
-
-      <div class="row mt-5">
-
-        <div class="col-md-4">
-          <a class="catA" href="#">
-            <div class="card cat text-center" style="">
-              
-                <div class="card-body">
-                  <h5 class="card-title">Add Squad</h5>
-                </div>
-              
-            </div>
-          </a>
-        </div>
-        <div class="col-md-4">
-          <a class="catA" href="#">
-            <div class="card cat text-center" style="">
-              
-                <div class="card-body">
-                  <h5 class="card-title">Remove Squad</h5>
-                </div>
-             
-            </div>
-          </a>
-        </div>
-        <div class="col-md-4">
-          <a class="catA" href="#">
-            <div class="card cat text-center" style="">
-              
-                <div class="card-body">
-                  <h5 class="card-title">Update Squad</h5>
-                </div>
-              
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <?php 
-      }
-      ?>
+     
 
       <!-- Next Row -->
 

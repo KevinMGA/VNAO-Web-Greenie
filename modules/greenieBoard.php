@@ -218,10 +218,45 @@ class GreenieBoard {
 
     public function allPilots() {
 
-        $sql = "SELECT * FROM pilots WHERE callsign != ' ' ORDER BY squad ASC";
+        $sql = "SELECT * FROM pilots WHERE callsign != '&nbsp;' ORDER BY squad ASC";
         $this->db->query($sql);
         $results = $this->db->resultset();
         return $results;
+
+    }
+
+    public function managePilots() {
+
+        $sql = "SELECT * FROM pilots ORDER BY modex ASC";
+        $this->db->query($sql);
+        $results = $this->db->resultset();
+        return $results;
+
+    }
+
+    public function updatePilot($a, $b) {
+
+        $this->db->query('UPDATE pilots SET callsign = :b WHERE id = :a');
+        $this->db->bind(':a', $a);
+        $this->db->bind(':b', $b);
+        if($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public function clearPilot($a) {
+
+        $this->db->query('UPDATE pilots SET callsign = :b WHERE id = :a');
+        $this->db->bind(':a', $a);
+        $this->db->bind(':b', '&nbsp;');
+        if($this->db->execute()) {
+            return true;
+        } else {
+            return false;
+        }
 
     }
 

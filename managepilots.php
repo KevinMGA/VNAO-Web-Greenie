@@ -11,12 +11,9 @@ if (!isset($_SESSION['email'])) {
 $Greenie = new GreenieBoard();
 
 if($_SESSION['type'] === '1') {
-  $allPilots = $Greenie->allPilots();
-  $colOne = 'SQUAD';
-} elseif ($_SESSION['type'] === '2') {
-  $allPilots = $Greenie->getPilots($_SESSION['squad']);
+  $allPilots = $Greenie->managePilots();
   $colOne = 'MODEX';
-}
+} 
 
 
 ?>
@@ -88,22 +85,66 @@ if($_SESSION['type'] === '1') {
               <th scope="col">CALLSIGN</th>
               <th class="avg">Flight Time</th>
               <th class="avg">Last Flight Date</th>
+              <th class="col">Action</th>
             </tr>
           </thead>
           <tbody>
            <?php foreach($allPilots as $s):?>
+           	<?php
+           		if($s->callsign == "&nbsp;") {
+           			$call = "";
+           		} else {
+           			$call = $s->callsign;
+           		}
+           	?>
             <tr>
               <?php 
               if($_SESSION['type'] === '1') {
-                echo '<td>' .$s->squad. '</td>';
-              } else {
                 echo '<td>' .$s->modex. '</td>';
-              }
+              } 
               ?>
               <td><?php echo $s->callsign;?></td>
               <td><?php echo gmdate("H:i:s", intval($s->flightTime));?></td>
               <td><?php echo $Greenie->lastFlight($s->callsign); ?></td>
+              <td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#manage_pilot_<?php echo $s->id;?>">Edit</button></td>
             </tr>
+
+
+            <div class="modal fade" id="manage_pilot_<?php echo $s->id;?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit Modex <?php echo $s->modex;?> </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        
+                        <form id="form_pilot_<?php echo $s->id;?>" action="action.php?id=manage_pilot" method="POST">
+                            <div class="row">
+
+                                <div class="col">
+                                    <label>CallSign</label>
+                                    <input type="text" class="form-control" name="callsign" value="<?php echo $call;?>" placeholder="<?php echo $call;?>">
+                                </div>
+                                
+                                <input type="hidden" name="id" value="<?php echo $s->id;?>"/>
+
+                            </div>
+                        </form>
+                        
+                        <form id="clear_form_<?php echo $s->id;?>" action="action.php?id=clear_pilot" method="POST">
+                            <input type="hidden" name="id" value="<?php echo $s->id;?>"/>
+                        </form>
+
+                        <div class="modal-footer">
+                        <input type="button" class="btn btn-secondary" value="Clear" onclick="clear_submit(<?php echo $s->id;?>)">
+                        <input type="button" name="subButton" value="Sub" class="btn btn-primary" onclick="pilot_submit(<?php echo $s->id;?>)"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
           <?php endforeach;?>
           </tbody>
         </table>
@@ -113,9 +154,9 @@ if($_SESSION['type'] === '1') {
 
       <!-- Next Row -->
 
-             
+      
     </div>
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
     </script>
     <script
@@ -129,6 +170,15 @@ if($_SESSION['type'] === '1') {
       $(document).ready( function () {
           $('#pilotTable').DataTable();
       } );
+    </script>
+
+    <script>
+        function pilot_submit(id) {
+            document.getElementById("form_pilot_"+id).submit();
+        }
+        function clear_submit(id) {
+            document.getElementById("clear_form_"+id).submit();
+        }
     </script>
   </body>
 </html>
