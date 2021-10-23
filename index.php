@@ -83,7 +83,7 @@ $Greenie = new GreenieBoard();
       
       <div class="row mt-5">
 
-        <div class="col-md-6">
+        <div class="col-md-12">
           <a class="catA" href="managepilots.php">
             <div class="card cat text-center" style="">
                 <div class="card-body">
@@ -92,6 +92,7 @@ $Greenie = new GreenieBoard();
             </div>
           </a>
         </div>
+        <!--
         <div class="col-md-6">
           <a class="catA" href="#">
             <div class="card cat text-center" style="">
@@ -103,7 +104,7 @@ $Greenie = new GreenieBoard();
             </div>
           </a>
         </div>
-       
+       -->
       </div>
 
      
