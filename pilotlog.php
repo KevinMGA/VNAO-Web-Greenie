@@ -65,6 +65,7 @@ foreach($grade as $g) {
 	if($g->wire == '1') {
 		$onewire++;
 	}
+	var_dump($g);
 }
 
 ?>
