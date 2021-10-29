@@ -26,23 +26,19 @@ $twowire = 0;
 $onewire = 0;
 
 foreach($grade as $g) {
+
 	//Grades
 	if($g->grade == '_OK_') {
 		$uni++;
-	}
-	if($g->grade == 'OK') {
+	} elseif($g->grade == 'OK') {
 		$ok++;
-	}
-	if($g->grade == '(OK)') {
+	} elseif($g->grade == '(OK)') {
 		$fair++;
-	}
-	if($g->grade == '--') {
+	} elseif($g->grade == '--') {
 		$ng++;
-	}
-	if($g->grade == 'WO') {
+	} elseif($g->grade == 'WO') {
 		$wo++;
-	}
-	if($g->grade == '-- (BOLTER)') {
+	} elseif($g->grade == '-- (BOLTER)') {
 		$bolter++;
 	}
 
@@ -60,8 +56,6 @@ foreach($grade as $g) {
 	} else {
 		$nowire++;
 	}
-
-	var_dump($g);
 }
 
 ?>
