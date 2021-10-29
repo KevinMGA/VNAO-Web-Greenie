@@ -47,22 +47,22 @@ foreach($grade as $g) {
 	}
 
 	// Wires
-	if($g->wire == ' ') {
+	if($g->wire == '') {
 		$noWire++;
 	}
-	if($g->wire == '99') {
+	if($g->wire == 99) {
 		$fourwire++;
 	}
-	if($g->wire == '4') {
+	if($g->wire == 4) {
 		$threewire++;
 	}
-	if($g->wire == '3') {
+	if($g->wire == 3) {
 		$twowire++;
 	}
-	if($g->wire == '2') {
+	if($g->wire == 2) {
 		$onewire++;
 	}
-	if($g->wire == '1') {
+	if($g->wire == 1) {
 		$onewire++;
 	}
 	var_dump($g);
