@@ -46,25 +46,21 @@ foreach($grade as $g) {
 		$bolter++;
 	}
 
-	// Wires
-	if($g->wire == '') {
-		$noWire++;
-	}
-	if($g->wire == 99) {
-		$fourwire++;
-	}
-	if($g->wire == 4) {
-		$threewire++;
-	}
-	if($g->wire == 3) {
-		$twowire++;
-	}
-	if($g->wire == 2) {
-		$onewire++;
-	}
+	// Wire
 	if($g->wire == 1) {
 		$onewire++;
+	} elseif($g->wire == 2) {
+		$twowire++;
+	} elseif($g->wire == 3) {
+		$threewire++;
+	} elseif($g->wire == 4) {
+		$fourwire++;
+	} elseif($g->wire == 4) {
+		$fourwire++;
+	} else {
+		$nowire++;
 	}
+
 	var_dump($g);
 }
 
