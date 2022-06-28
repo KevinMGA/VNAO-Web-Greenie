@@ -37,7 +37,7 @@ class Auto {
         
         $ranNum = rand(9999, 999999);
 
-        $sql = "SELECT a.id, a.pilot, a.grade, a.points, a.wire, a.groove, a._case, a.datetime FROM traps AS a WHERE a.board_ID = '0' ORDER BY a.datetime ASC";
+        $sql = "SELECT * FROM traps WHERE board_ID = '0' ORDER BY a.datetime ASC";
         $this->db->query($sql);
         $results = $this->db->single();
         
